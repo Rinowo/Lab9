@@ -11,9 +11,6 @@ public class Controller {
 
     public Controller() {
         list.add(new Account(200599, 5000000));
-        list.add(new Account(100400, 10000000));
-        list.add(new Account(210510, 50000));
-        list.add(new Account(291212, 100000));
     }
 
     public long getBalanceNumber() {
@@ -45,10 +42,7 @@ public class Controller {
             if (id == account.getId()) {
                 System.out.print("Nhập số tiển chuyển: "); long money = sc.nextLong();
                 transfer(money);
-                System.out.println("Mô tả: "); String description = sc.nextLine();
-                System.out.println();
-                System.out.println("Tài khoản thụ hưởng: "); String beneficiaryAccount = sc.nextLine();
-                listHistory.add(new TransactionHistory(description,beneficiaryAccount,money));
+                listHistory.add(new TransactionHistory("Chuyển khoản",("" + id),money));
                 return found = true;
             }
             else if (id != account.getId()) {
@@ -60,8 +54,7 @@ public class Controller {
     }
 
     public void getHistory() {
-            System.out.println("Lịch sử giao dịch: " + listHistory);
-
+            System.out.println(listHistory);
     }
 
     public static String formatMoney(long money) {
